@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import checkout
+from .views import index
 
 urlpatterns = [
-    path('checkout/', checkout, name='checkout'),
+    path('', index, name='index'),
 ]

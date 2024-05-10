@@ -1,11 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout</title>
-</head>
-<body>
-    <a href="{{ checkout_url }}">Finalizar compra</a>
-</body>
-</html>
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+  <!-- header -->
+  {% include "index/partials/header.html" %}
+
+  <!-- banner-area -->
+  {% include "index/partials/banner-area.html" %}
+
+  <!-- video-area -->
+  {% include "index/partials/video-area.html" %}
+
+  <!-- top-course-area -->
+  {% include "index/partials/top-course-area.html" %}
+
+  <!-- home-about-area -->
+  {% include "index/partials/home-about-area.html" %}
+
+  <!-- service-area -->
+  {% include "index/partials/service-area.html" %}
+
+  <!-- unique-feature-area
+  {% include "index/partials/unique-feature-area.html" %} -->
+
+  <!-- review-area -->
+  {% include "index/partials/review-area.html" %}
+
+  <!-- footer-area -->
+  {% include "index/partials/footer.html" %}
+
+  <!-- scripts -->
+  {% include "index/partials/scripts.html" %}
+
+  {% endblock content %}
