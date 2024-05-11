@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Thirds Apps -------------------------
+    'phonenumber_field',
+    'django_countries',
+    'accounts',
     'core',
     'checkout',
 ]
@@ -113,6 +116,11 @@ TIME_ZONE = 'America/Cuiaba'
 USE_I18N = True
 
 USE_TZ = True
+
+# Modelo personalizado de usuário...
+AUTH_USER_MODEL = 'accounts.CustomUser'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 
 # Static files (CSS, JavaScript, Images)

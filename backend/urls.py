@@ -24,8 +24,13 @@ urlpatterns = [
     path('', include('core.urls')),
     path('admin/', admin.site.urls),
     path('endpay/', include('checkout.urls')),
+
+    # Atuhenticação -------------
+    path('accounts/', include('accounts.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-admin.site.site_header = 'Administação Vlab'
-admin.site.site_title = 'Laboratório Vlab'
-admin.site.index_title = 'Sistema de auxilio Vlab'
+admin.site.site_header = 'Administação Landig-pages'
+admin.site.site_title = 'Laboratório Landig-pages'
+admin.site.index_title = 'Sistema de auxilio Landig-pages'

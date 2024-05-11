@@ -1,0 +1,9 @@
+<h1>Seu Carrinho de Compras</h1>
+<ul>
+    {% for item in cart_items %}
+    <li>
+        {{ item.product.name }} - {{ item.product.price }} - Quantidade: {{ item.quantity }}
+        <a href="{% url 'remove_from_cart' item.id %}">Remover</a>
+    </li>
+    {% endfor %}
+</ul>
