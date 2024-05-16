@@ -2200,3 +2200,14 @@ h6 {
 .switch-wrap p {
   margin: 0;
 }
+
+
+/* Inicio do CSS para centralizar o painel de login horizontalmente */
+.text-center {
+  text-align: center;
+}
+
+.conteiner_login {
+  margin-top: 15%;
+}
+/* Fim do CSS para centralizar o painel de login horizontalmente */

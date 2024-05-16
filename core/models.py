@@ -7,13 +7,14 @@ User = get_user_model()
 
 ########################## Monitoramento #####################################
 class AccessLog(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     timestamp = models.DateTimeField()
     path = models.CharField(max_length=255)
     ip_address = models.GenericIPAddressField()
     latitude = models.FloatField(null=True, blank=True)
     longitude = models.FloatField(null=True, blank=True)
     device = models.CharField(max_length=255, null=True, blank=True)
+    user_agent = models.CharField(max_length=200)
 
     def save(self, *args, **kwargs):
         if not self.latitude or not self.longitude:
@@ -49,3 +50,7 @@ class AccessLog(models.Model):
         device = user_agent.device.family if user_agent.device.family else "Unknown"
         # Define o tipo de dispositivo
         self.device = device
+
+    def _set_user(self, request):
+        if request.user.is_authenticated:
+            self.user = request.user

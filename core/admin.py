@@ -1,10 +1,19 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
 from .models import AccessLog
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 @admin.register(AccessLog)
 class AccessLogAdmin(admin.ModelAdmin):
-    list_display = ('user', 'timestamp', 'path')  # Corrigido 'pat' para 'path'
-    search_fields = ('user__username',)  # Adicione '__username' para buscar pelo nome de usuário
+    list_display = ('ip_address','display_user', 'timestamp', 'path')
+    search_fields = ('ip_address','user__username', 'user__first_name', 'user__last_name', 'path')
     list_filter = ('user', 'timestamp')
-    ordering = ('user__username',)
+    ordering = ('-timestamp',)
+
+    def display_user(self, obj):
+        if obj.user:
+            return obj.user.get_full_name() if obj.user.first_name and obj.user.last_name else obj.user.username
+        else:
+            return 'Anonymous'
+    display_user.short_description = 'User'
