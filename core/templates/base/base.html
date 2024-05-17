@@ -36,7 +36,17 @@
     </head>
 
     <body>
-        
+
+        {% if site_type == 'landing_page' %}
+        {% include "landing/partials/header.html" %}
+        {% endif %}
+        {% if site_type == 'portfolio' %}
+        {% include "portfolio/partials/header.html" %}
+        {% endif %}
+        {% if site_type == 'agency' %}
+        {% include "agency/partials/header.html" %}
+        {% endif %}
+
         {% block content %}
         {% endblock content %}
 

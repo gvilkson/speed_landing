@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import AccessLog
+from .models import AccessLog, Index
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -17,3 +17,10 @@ class AccessLogAdmin(admin.ModelAdmin):
         else:
             return 'Anonymous'
     display_user.short_description = 'User'
+
+@admin.register(Index)
+class IndexAdmin(admin.ModelAdmin):
+    list_display = ('tipo',)
+    search_fields = ('tipo',)
+    list_filter = ('tipo',)
+    ordering = ('tipo',)

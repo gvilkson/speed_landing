@@ -5,6 +5,21 @@ from user_agents import parse as parse_ua
 
 User = get_user_model()
 
+########################## Partials para index ###############################
+class Index(models.Model):
+    TIPO_LANDING_PAGE = 'landing_page'
+    TIPO_PORTFOLIO = 'portfolio'
+    TIPO_AGENCY = 'agency'
+
+    ESCOLHAS_TIPO = [
+        (TIPO_LANDING_PAGE, 'Landing Page'),
+        (TIPO_PORTFOLIO, 'Portfólio'),
+        (TIPO_AGENCY, 'Agência'),
+    ]
+
+    tipo = models.CharField(max_length=20, choices=ESCOLHAS_TIPO)
+    template = models.CharField(max_length=1000)
+
 ########################## Monitoramento #####################################
 class AccessLog(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)

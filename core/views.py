@@ -1,14 +1,35 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
-from .models import AccessLog
-from django.contrib.auth.models import AnonymousUser
-from django.utils import timezone
+from .models import AccessLog, Index
+from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 
 User = get_user_model()
 
 def index(request):
-    return render(request, 'index/index.html')
+    # Template default
+    template_name = 'index/index.html'
+
+    # Lista com as três opções
+    opcoes = [
+        Index.TIPO_LANDING_PAGE,
+        Index.TIPO_PORTFOLIO,
+        Index.TIPO_AGENCY,
+    ]
+
+    # Iterar sobre as opções
+    for opcao in opcoes:
+        try:
+            # Tenta encontrar um objeto Index com o tipo correspondente
+            index = Index.objects.get(tipo=opcao)
+            template_name = index.template
+            print(f"Encontrado um objeto Index com tipo '{opcao}'")
+        except ObjectDoesNotExist:
+            print(f"Nenhum objeto Index com tipo '{opcao}' encontrado")
+        except MultipleObjectsReturned:
+            print(f"Mais de um objeto Index com tipo '{opcao}' encontrado")
+
+    return render(request, template_name)
 
 def user_access_logs(request, user_id):
     if request.user.is_authenticated:
