@@ -9,6 +9,7 @@ urlpatterns = [
     path('lock-screen/', v.lock_screen, name='lock-screen'),
     path('logout/', v.logout_view, name='logout'),
     path('profile/', v.profile, name='profile'),
+    path('register/', v.register, name='register'),
 
 
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='registration/password_reset_form_custom.html'), name='password_reset'),

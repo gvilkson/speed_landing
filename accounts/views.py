@@ -1,15 +1,28 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout
 from accounts.models import UserProfile
-from django.utils import timezone
 import pytz
 import datetime
+from django.contrib.auth import login
+from accounts.forms import CustomUserCreateForm
 
 # Variáveis globais --------------------------------------
 avatar_url = None
 current_datetime = None
 email = None
 # End Variáveis globais ----------------------------------
+
+def register(request):
+    if request.method == 'POST':
+        form = CustomUserCreateForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('profile')
+    else:
+        form = CustomUserCreateForm()
+    return render(request, 'accounts/register.html', {'form': form})
+
 
 def profile(request):
     if request.user.is_authenticated:
