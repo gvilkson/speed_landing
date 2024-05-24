@@ -2,10 +2,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" class="no-js">
 
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-br" class="no-js">
-
     <head>
 
         <!-- Meta Tags -->
@@ -23,6 +19,9 @@
 
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+
+        <!-- Link para Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
         <!-- CSS -->
         <link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
@@ -49,6 +48,57 @@
 
         {% block content %}
         {% endblock content %}
+
+        {% block extends_js %}
+        <script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+        <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+        <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+        <script src="{% static 'js/easing.min.js' %}"></script>
+        <script src="{% static 'js/hoverIntent.js' %}"></script>
+        <script src="{% static 'js/superfish.min.js' %}"></script>
+        <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+        <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/jquery.sticky.js' %}"></script>
+        <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+        <script src="{% static 'js/parallax.min.js' %}"></script>
+        <script src="{% static 'js/mail-script.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-23581568-13');
+        </script>
+
+        <!-- JavaScript para mostrar/ocultar o submenu do menu header -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {a
+                var userMenuToggle = document.getElementById("user-menu-toggle");
+                var userSubmenu = document.getElementById("user-submenu");
+
+                userMenuToggle.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    userSubmenu.style.display = (userSubmenu.style.display === "block") ? "none" : "block";
+                });
+
+                // Fechar o submenu se clicar fora dele
+                document.addEventListener("click", function(event) {
+                    if (!userMenuToggle.contains(event.target) && !userSubmenu.contains(event.target)) {
+                        userSubmenu.style.display = "none";
+                    }
+                });
+            });
+        </script>
+
+        {% endblock extends_js %}
 
     </body>
 

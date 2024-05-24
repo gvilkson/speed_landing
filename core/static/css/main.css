@@ -2211,3 +2211,36 @@ h6 {
   margin-top: 15%;
 }
 /* Fim do CSS para centralizar o painel de login horizontalmente */
+
+
+/* Inicio do CSS para cart */
+.user-menu {
+  position: relative;
+}
+
+.user-submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1000;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-submenu li {
+  padding: 8px 16px;
+}
+
+.user-submenu li a {
+  color: black;
+  text-decoration: none;
+}
+
+.user-submenu li a:hover {
+  background-color: #f1f1f1;
+}
+/* Fim do CSS para cart*/

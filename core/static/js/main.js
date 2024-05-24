@@ -147,13 +147,20 @@ $(document).ready(function(){
   
 
   // Header scroll class
-  $(window).scroll(function() {
-    if ($(this).scrollTop() > 100) {
-      $('#header').addClass('header-scrolled');
-    } else {
-      $('#header').removeClass('header-scrolled');
-    }
-  })
+  // Verifica se o cabeçalho possui a classe 'cart-on'
+  if ($('#header').hasClass('cart-on')) {
+    // Se o cabeçalho tiver a classe 'cart-on', não faz nada
+    console.log("Header has class 'cart-on'.");
+  } else {
+    // Se o cabeçalho não tiver a classe 'cart-on', adiciona ou remove a classe 'header-scrolled' com base na rolagem
+    $(window).scroll(function() {
+      if ($(this).scrollTop() > 100) {
+        $('#header').addClass('header-scrolled');
+      } else {
+        $('#header').removeClass('header-scrolled');
+      }
+    });
+  }
 
 
     $('.active-course-carusel').owlCarousel({
@@ -250,8 +257,5 @@ $(document).ready(function(){
         $(document).ready(function() {
             $('#mc_embed_signup').find('form').ajaxChimp();
         });      
-
-
-
-
- });
+    
+});

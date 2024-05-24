@@ -2,9 +2,28 @@
 
 {% block content %}
 
-<section>
-    <h1>Usuario deslogado</h1>
-    <a href="{% url "index" %}">Voltar para home</a>
-</section>
+<!DOCTYPE html>
+
+    <section class="home-about-area">
+        <div class="container-fluid">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-6 no-padding home-about-left">
+                    <img class="img-fluid" src="" alt="Imagem de Logout">
+                </div>
+                <div class="col-lg-6 no-padding home-about-right">
+                    <h1>Você foi deslogado</h1>
+                    <p>
+                        <span>Esperamos vê-lo novamente em breve!</span>
+                    </p>
+                    <p>
+                        Você saiu da sua conta com sucesso. Aproveite para explorar mais ou voltar para a página inicial.
+                    </p>
+                    <a class="text-uppercase primary-btn" href="{% url 'index' %}">Voltar para Home</a>
+                    <a class="text-uppercase primary-btn" href="{% url 'login' %}">Fazer Login</a>
+                    <a class="text-uppercase primary-btn" href="{% url 'accounts:register' %}">Criar uma Conta</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
 {% endblock content %}

@@ -23,6 +23,7 @@ from django.conf import settings
 urlpatterns = [
     path('', include('core.urls')),
     path('admin/', admin.site.urls),
+    path('shop/', include('shop.urls')),
     path('endpay/', include('checkout.urls')),
 
     # Atuhenticação -------------

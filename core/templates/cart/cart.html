@@ -1,9 +1,30 @@
-<h1>Seu Carrinho de Compras</h1>
-<ul>
-    {% for item in cart_items %}
-    <li>
-        {{ item.product.name }} - {{ item.product.price }} - Quantidade: {{ item.quantity }}
-        <a href="{% url 'remove_from_cart' item.id %}">Remover</a>
-    </li>
-    {% endfor %}
-</ul>
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="section-gap py-5">
+    <div class="container">
+        <h1 class="mb-4">Seu Carrinho de Compras</h1>
+        <div class="cart-items">
+            {% if cart_items %}
+                <ul class="list-group">
+                    {% for item in cart_items %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div class="item-details">
+                            <h5 class="mb-1">{{ item.product.name }}</h5>
+                            <p class="mb-1 text-muted">Preço: {{ item.product.price }}</p>
+                            <p class="mb-0">Quantidade: {{ item.quantity }}</p>
+                        </div>
+                        <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-danger btn-sm">Remover</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-muted">Seu carrinho está vazio.</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% include "landing/partials/footer.html" %}
+{% endblock content %}
