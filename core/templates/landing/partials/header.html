@@ -14,7 +14,7 @@
                     <li class="menu-active"><a href="{% url "index" %}">Início</a></li>
                     {% endif %}
 
-                    {% if not 'cart' in request.path %}
+                    {% if  request.path == '/' %}
                     <li><a href="#about">Sobre</a></li>
                     <li><a href="#service">Serviço</a></li>
                     <li><a href="#review">Avaliações</a></li>
@@ -26,7 +26,7 @@
                         <li class="user-menu">
                             <a href="#" id="user-menu-toggle"><i class="fa fa-user"></i> {{ user.first_name }} ({{ user.email }})</a>
                             <ul class="user-submenu" id="user-submenu">
-                                <li><a href="{% url 'index' %}">Perfil</a></li>
+                                <li><a href="{% url 'accounts:profile' %}">Perfil</a></li>
                                 <li><a href="{% url 'logout' %}">Sair</a></li>
                             </ul>
                         </li>

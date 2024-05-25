@@ -1,0 +1,46 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block content %}
+<section class="profile-area">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="profile-container p-4">
+                    <div class="text-center">
+                        <img src="{{avatar}}" alt="Foto de Perfil" class="img-fluid rounded-circle mb-3" width="150">
+                        <h2>{{ user.username }}</h2>
+                        <p>{{ user.email }}</p>
+                    </div>
+                    <hr>
+                    <div class="profile-actions text-center">
+                        <a href="#" class="btn btn-primary btn-block mb-2">Editar Perfil</a>
+                        <a href="#}" class="btn btn-secondary btn-block">Alterar Senha</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .profile-area {
+        padding: 60px 0;
+        margin-top: 20vh
+    }
+    .profile-container {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        background-color: #fff;
+    }
+    .profile-container h2 {
+        margin-bottom: 10px;
+    }
+    .profile-container p {
+        margin-bottom: 20px;
+    }
+    .btn-block {
+        width: 100%;
+    }
+</style>
+{% endblock content %}

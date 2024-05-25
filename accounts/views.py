@@ -27,8 +27,12 @@ def register(request):
 
 def profile(request):
     if request.user.is_authenticated:
+
+        profile = UserProfile.objects.get(user=request.user)
+        avatar = profile.avatar_url()
+        
         context = {
-            # Adicione quaisquer outros dados adicionais que você queira incluir no contexto
+            'avatar':avatar
         }
         return render(request, 'accounts/profile.html', context)
     else:
